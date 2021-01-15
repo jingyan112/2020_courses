@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs') %>
+<h1>Summary!</h1>
+<script type="text/javascript">
+    function change(type){
+        document.getElementById("weekly").style.display="";
+        document.getElementById("monthly").style.display="";
+        if(type == 1) {
+           document.getElementById("monthly").style.display="none"; } 
+        if(type == 2) {
+           document.getElementById("weekly").style.display="none"; }  }
+</script>
+<div>
+<% if (user && user.length > 0) { %>
+    <p><%= "Logged in as " %><%= user %></p>
+    <p>Choose which summary you want to see!</p>
+    <label><input type="radio" name="time" value="weekly" onclick="change(1)" > Weekly</label>
+    <label><input type="radio" name="time" value="monthly"  onclick="change(2)" > Monthly</label>
+    <% } %>
+<% if (login && login === 1)  { %>
+    <form method="POST" action='/auth/logout'>
+        <input type="submit" value="Logout"/>
+    </form>
+    <% } %>
+</div>
+<div id="weekly" style="display: none;">
+    <ul>
+        <li><%= "Weekly average sleep duration: " %><%= avg_sleep_duration_weekly %><%= " h" %></li>
+        <li><%= "Weekly average time spent on sports and exercise: " %><%= avg_time_sports_weekly %><%= " h" %></li>
+        <li><%= "Weekly average time spent studying: " %><%= avg_time_study_weekly %><%= " h" %></li>
+        <li><%= "Weekly average sleep quality: " %><%= avg_sleep_quality_weekly %><%= " level" %></li>
+        <li><%= "Weekly average generic mood: " %><%= avg_generic_mood_weekly %><%= " level" %></li>
+    </ul>
+</div>
+<div id="monthly" style="display: none;">
+    <ul>
+        <li><%= "Monthly average sleep duration: " %><%= avg_sleep_duration_monthly %><%= " h" %></li>
+        <li><%= "Monthly average time spent on sports and exercise: " %><%= avg_time_sports_monthly %><%= " h" %></li>
+        <li><%= "Monthly average time spent studying: " %><%= avg_time_study_monthly %><%= " h" %></li>
+        <li><%= "Monthly average sleep quality: " %><%= avg_sleep_quality_monthly %><%= " level" %></li>
+        <li><%= "Monthly average generic mood: " %><%= avg_generic_mood_monthly %><%= " level" %></li>
+    </ul>
+</div>
+<%- include('./partials/footer.ejs') %>%
