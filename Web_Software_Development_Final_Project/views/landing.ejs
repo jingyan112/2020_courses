@@ -1,0 +1,13 @@
+<%- include('./partials/header.ejs') %>
+<h1>Welcome!</h1>
+<h2>This is a web apppcation for self-monitoring purposes!</h2>
+<p><%= "Users' average mood for yesterday is: " %><%= yesterday_mood %></p>
+<p><%= "Users' average mood for today is: " %><%= today_mood %></p>
+<p><%= logs %></p>
+<div>
+    <h3><a href="/auth/registration">Register Now!</a></h3>
+    <h3><a href="/auth/login">Login Now!</a></h3>
+    <h4><a href="/behavior/reporting">Report Data Portal (You can not access unless you login first)</a></h4>
+    <p><a href="https://docs.google.com/document/d/1MHk_RM5FpFUfEB6_PMMTKw2UPUDJGxcVKIUefiN2F90/edit?usp=sharing"><strong>README of this Web application!</strong></a></p>
+</div>
+<%- include('./partials/footer.ejs') %>
