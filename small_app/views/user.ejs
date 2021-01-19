@@ -1,0 +1,22 @@
+<%- include('./partials/header.ejs') %>
+<h1>Registration!</h1>
+<form method="POST" action='/auth/registration'>
+    <label for="email">Email</label>
+    <input type="email" name="email" />
+    <label for="password">Password</label>
+    <input type="password" name="password" />
+    <label for="verification">Verification</label>
+    <input type="password" name="verification" />
+    <input type="submit" value="Register!" />
+</form>
+
+<% if (logs && logs.length > 0) { %>
+    <ul>
+        <% logs.forEach((log) => { %>
+            <li><%= log %></li>
+        <% }); %>
+    </ul>
+    <% } %>
+
+<p><a href="/auth/login">Login from here!</a></p>
+<%- include('./partials/footer.ejs') %>
