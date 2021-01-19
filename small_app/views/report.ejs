@@ -1,0 +1,21 @@
+<%- include('./partials/header.ejs') %>
+<h1>Report Data!</h1>
+<% if (user)  { %>
+    <p><%= "Logged in as " %><%= user %></p>
+    <p><a href="/behavior/summary">Get data summary here!</a></p>
+    <% } %>
+<% if (login && login === 1)  { %>
+    <form method="POST" action='/auth/logout'>
+        <input type="submit" value="Logout"/>
+    </form>
+    <% } %>
+<div>
+    <form method="POST" action='/behavior/reporting'>
+        <label for="date">Date</label>
+        <input type="date" name="date" />
+        <label for="Whether_Using_Allowance">Whether_Using_Allowance (0 for no, 1 for yes)</label>
+        <input type="text" name="Whether_Using_Allowance" />
+        <input type="submit" value="Report!" />
+    </form>
+</div>
+<%- include('./partials/footer.ejs') %>
