@@ -1,0 +1,31 @@
+<%- include('./partials/header.ejs') %>
+<h1>Login!</h1>
+<form method="POST"  action='/auth/login'>
+    <label for="email">Email</label>
+    <input type="email" name="email" />
+    <label for="password">Password</label>
+    <input type="password" name="password" />
+    <input type="submit" value="Login!" />
+</form>
+<% if (logs && logs.length > 0) { %>
+    <ul>
+        <% logs.forEach((log) => { %>
+            <li><%= log %></li>
+            <% if (log === "Login Successfully!") { %>
+                <p><a href="/behavior/reporting">Report data here!</a></p>
+                <p><a href="/behavior/summary">Get summary info here!</a></p>
+                <% } %>
+            <% if (log === "Invalid email or password!") { %>
+                <p><a href="/auth/registration">Register here!</a></p>
+                <% } %>
+        <% }); %>
+    </ul>
+    <% } %>
+<div>
+    <% if (login && login === 1)  { %>
+    <form method="POST" action='/auth/logout'>
+        <input type="submit" value="Logout"/>
+    </form>
+    <% } %>
+</div>
+<%- include('./partials/footer.ejs') %>
